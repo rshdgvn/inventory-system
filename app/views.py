@@ -22,7 +22,7 @@ def product_create_view(request):
 
 # Read View
 def product_list_view(request):
-  products = Product.object.all()
+  products = Product.objects.all()
   return render(request, 'app/product_list.html', {'products': products})
 
 
@@ -31,7 +31,7 @@ def product_update_view(request, product_id):
   product = Product.objects.get(product_id=product_id)
   form = ProductForm(instance=product)
   if request.method == 'POST':
-    ProductForm(request.POST, instance=product)
+    form = ProductForm(request.POST, instance=product)
     if form.is_valid():
       form.save()
       return redirect('product_list')

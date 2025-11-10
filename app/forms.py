@@ -1,5 +1,6 @@
 from django import forms
 from .models import Product
+from django.forms import TextInput, NumberInput
 
 class ProductForm(forms.ModelForm):
   class Meta:
